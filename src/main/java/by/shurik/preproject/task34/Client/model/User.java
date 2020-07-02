@@ -1,6 +1,7 @@
 package by.shurik.preproject.task34.Client.model;
 
 
+import by.shurik.preproject.task34.Client.dto.UserDto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,6 +37,15 @@ public class User implements UserDetails {
     }
 
     public User() {
+    }
+
+    public User(UserDto userDto) {
+        this.id = userDto.getId();
+        this.name = userDto.getName();
+        this.position = userDto.getPosition();
+        this.age = userDto.getAge();
+        this.userPassword = userDto.getUserPassword();
+        this.email = userDto.getEmail();
     }
 
     public String getUserPassword() {

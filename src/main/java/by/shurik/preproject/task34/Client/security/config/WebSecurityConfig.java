@@ -43,23 +43,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
 
-//    @Bean
-//    public RestTemplate restTemplate() {
-//        return new RestTemplate();
-//    }
-//
-//    @Bean
-//    public HttpHeaders headers() {
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-//        String auth = "123" + ":" + "123";
-//        byte[] encodedAuth = Base64.encodeBase64(
-//                auth.getBytes(StandardCharsets.US_ASCII));
-//        String authHeader = "Basic " + new String(encodedAuth);
-//        headers.add(HttpHeaders.AUTHORIZATION, authHeader);
-//        return headers;
-//    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()

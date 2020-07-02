@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     function allUsers() {
         $.ajax({
-            url: "http://localhost:8081/admin/allUsers",
+            url: "http://localhost:8080/admin/allUsers",
             method: "GET",
             dataType: "json",
             success: function (data) {
@@ -49,13 +49,13 @@ $(document).ready(function () {
             newObject["roles"] = $("#roleSelectNU").val();
 
             $.ajax({
-                url: '/admin/addUser',
+                url: 'http://localhost:8080/admin/addUser',
                 type: 'POST',
                 contentType: "application/json;charset=UTF-8",
                 data: JSON.stringify(newObject),//отправляем на сервер JSON преобразовав объект newObject через метод JSON.stringify()
                 dataType: 'json',
                 context: document.getElementById('addingNewUserDiv'),// this = document.getElementById(..)
-                success: function (data) {//data - данные с сервера (DTO)
+                success: function (data) {//data - данные возвращающиеся с сервера (JSON-DTO)
                     $("#addForm").trigger("reset");
                     var tableBody = $('#myTbody');
 
@@ -93,7 +93,7 @@ $(document).ready(function () {
         var id = $("#IdInput").val();
         var delObj = $('#deleteModalButton-' + id);
         $.ajax({
-            url: '/admin/deleteUser/' + id,
+            url: 'http://localhost:8080/admin/deleteUser/' + id,
             type: 'DELETE',
             contentType: "application/json;charset=UTF-8",
 
@@ -135,7 +135,7 @@ $(document).ready(function () {
         updateObject["email"] = $("#emailInput").val();
         updateObject["roles"] = $("#roleSelectInput").val();
         $.ajax({
-            url: '/admin/update',
+            url: 'http://localhost:8080/admin/update',
             type: 'PUT',
             contentType: "application/json;charset=UTF-8",
             data: JSON.stringify(updateObject),
