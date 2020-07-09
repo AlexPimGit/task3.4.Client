@@ -4,9 +4,6 @@ import by.shurik.preproject.task34.Client.dto.UserDto;
 import by.shurik.preproject.task34.Client.mapper.UserMapper;
 import by.shurik.preproject.task34.Client.model.Role;
 import by.shurik.preproject.task34.Client.model.User;
-import by.shurik.preproject.task34.Client.restTemplates.RestTemplateLogin;
-import by.shurik.preproject.task34.Client.service.RoleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -15,15 +12,6 @@ import java.util.Set;
 
 @Component
 public class UserMapperImpl implements UserMapper {
-    private RoleService roleService;
-    private RestTemplateLogin restTemplateLogin;
-
-    @Autowired
-    public UserMapperImpl(RoleService roleService, RestTemplateLogin restTemplateLogin) {
-        this.roleService = roleService;
-        this.restTemplateLogin = restTemplateLogin;
-
-    }
 
     @Override
     public User getUserFromDto(UserDto userDto) {
@@ -35,7 +23,7 @@ public class UserMapperImpl implements UserMapper {
 
     @Override
     public UserDto getUserDtoFromUser(User user) {
-        Long userId = ((User) (restTemplateLogin.getUserByEmail(user.getEmail()))).getId();
+        Long userId = user.getId();
         UserDto userDto = new UserDto(user);
         userDto.setId(userId);
         return userDto;

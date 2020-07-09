@@ -17,11 +17,6 @@ public class Application {
     public HttpHeaders headers() {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-//        String auth = "123" + ":" + "123";
-//        byte[] encodedAuth = Base64.encodeBase64(
-//                auth.getBytes(StandardCharsets.US_ASCII));
-//        String authHeader = "Basic " + new String(encodedAuth);
-//        headers.add(HttpHeaders.AUTHORIZATION, authHeader);
         return headers;
     }
 
@@ -29,11 +24,6 @@ public class Application {
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.basicAuthentication("123", "123").build();
     }
-
-    /*
-    restTemplate.getInterceptors().add(
-  new BasicAuthorizationInterceptor("username", "password"));
-     */
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
